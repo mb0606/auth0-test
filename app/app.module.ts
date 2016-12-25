@@ -8,6 +8,7 @@ import { ProfileComponent } from "./components/profile/profile.component";
 import { NavbarComponent } from "./components/navbar.component";
 
 import { AuthService } from "./services/auth.service";
+import { AUTH_PROVIDERS } from "angular2-jwt";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AuthService } from "./services/auth.service";
                   HomeComponent,
                   ProfileComponent,
                   NavbarComponent ],
-  providers:    [AuthService],
+  providers:    [AuthService,
+                AUTH_PROVIDERS ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
