@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { KEY, DOMAINE } from "../key.config";
 import { options } from "../auth.options";
+import {Router} from "@angular/router";
 
 declare var Auth0Lock: any;
 
@@ -10,7 +11,7 @@ export class AuthService {
 
   lock = new Auth0Lock( KEY, DOMAINE, options);
 
-  constructor() {
+  constructor(private router: Router) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult: any) => {
       this.lock.getProfile(authResult.idToken, function(error: any, profile: any){
@@ -38,5 +39,6 @@ export class AuthService {
     // Remove info from localStorage
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
+    this.router.navigate(['/']);
   }
 }

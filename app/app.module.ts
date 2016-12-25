@@ -9,6 +9,7 @@ import { NavbarComponent } from "./components/navbar.component";
 
 import { AuthService } from "./services/auth.service";
 import { AUTH_PROVIDERS } from "angular2-jwt";
+import {AuthGuard} from "./auth.guard";
 
 
 @NgModule({
@@ -18,8 +19,9 @@ import { AUTH_PROVIDERS } from "angular2-jwt";
                   HomeComponent,
                   ProfileComponent,
                   NavbarComponent ],
-  providers:    [AuthService,
-                AUTH_PROVIDERS ],
+  providers:    [ AuthService,
+                  AuthGuard,
+                  AUTH_PROVIDERS ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
