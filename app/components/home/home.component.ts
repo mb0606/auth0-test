@@ -6,6 +6,8 @@ import {AuthService} from "../../services/auth.service";
   template: `
     
     <h1>This is the home component</h1>
+    <h5 *ngIf="auth.authenticated()"> You are logged in </h5>
+    <h5 *ngIf="!auth.authenticated()"> You are not logged in please login to see more </h5>
   
 `,
 })
