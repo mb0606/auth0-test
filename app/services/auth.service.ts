@@ -9,6 +9,8 @@ declare var Auth0Lock: any;
 @Injectable()
 export class AuthService {
 
+  redirectLocation: string = null;
+
   lock = new Auth0Lock( KEY, DOMAINE, options);
 
   constructor(private router: Router) {
@@ -31,8 +33,14 @@ export class AuthService {
   }
 
   public login() {
-    // Call the show method to display the widget.
     this.lock.show();
+
+  }
+
+  public redirect(){
+    if(this.redirectLocation){
+      this.router.navigate([this.redirectLocation])
+    }
   }
 
   public logout() {
